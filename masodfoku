@@ -1,0 +1,59 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Masodfoku
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            //  Készítsetek el egy másodfokú egyenletet megoldó konzolos applikációt,
+            //  amelyben bekérjük az 'a', 'b' és 'c' paramétereket,
+            //  majd a diszkrimináns meghatározása után megállapítjuk,
+            //  hány megoldása van az egyenletnek, ki is írva az(okat).
+            //  D = b ^ 2 - 4 * a * c
+
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("Másodfokú egyenlet megoldó program:");
+            Console.WriteLine("-----------------------------------");
+
+            Console.Write("\nAdja meg az 'a' értékét: ");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("Adja meg a 'b' értékét: ");
+            double b = double.Parse(Console.ReadLine());
+            Console.Write("Adja meg a 'c' értékét: ");
+            double c = double.Parse(Console.ReadLine());
+
+            //  diszkrimináns 
+            double D = (Math.Pow(b, 2)) - 4 * (a * c);
+
+            //  + megoldás
+            double x1 = ((-b) + Math.Sqrt(D)) / (2 * a);
+
+            //  - megoldás
+            double x2 = ((-b) - Math.Sqrt(D)) / (2 * a);
+
+            //  ha a diszkrimináns nulla, akkor csak egy.
+            //  ha a diszkrimináns pozitív, akkor az egyenletnek két valós megoldása van.
+            //  ha pedig negatív, akkor az egyenletnek nincs valós megoldása.
+
+            if (D == 0)
+            {
+                Console.WriteLine("\nA másodfokú egyenletnek 1 megoldása van.");
+                Console.WriteLine($"Ez az érték: {x1}");
+
+            }
+            else if (D > 0)
+            {
+                Console.WriteLine("\nA másodfokú egyenletnek 2 megoldása van.");
+                Console.WriteLine($"Ezek az értékek x1 = {x1}; x2 = {x2}");
+            }
+            else
+            {
+                Console.WriteLine("\nA másodfokú egyenletnek nincs valós megoldása.");
+            }
+        }
+    }
+}
